@@ -8,8 +8,8 @@
 import Combine
 @testable import DataLayer
 
-class ProductRepositoryMock: ProductRepositoryProtocol {
-    func fetchProducts() async throws -> [ProductDTO] {
+public class ProductRepositoryMock: ProductRepositoryProtocol {
+    public func fetchProducts() async throws -> [ProductDTO] {
         // Simulate network delay
         try await Task.sleep(nanoseconds: 1_000_000_000) // sleep for 1 second
         
