@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-protocol ProductRepositoryProtocol {
+public protocol ProductRepositoryProtocol {
     @available(macOS 10.15, *)
     func fetchProducts() async throws -> [ProductDTO]
 }

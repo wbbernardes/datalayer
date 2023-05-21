@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct ProductDTO: Codable, Identifiable {
-    let id: Int
-    let title: String
-    let price: Double
-    let description: String
-    let image: String
-    let category: String
+public struct ProductDTO: Codable, Identifiable {
+    public let id: Int
+    public let title: String
+    public let price: Double
+    public let description: String
+    public let image: String
+    public let category: String
     
     enum CodingKeys: String, CodingKey {
         case id
