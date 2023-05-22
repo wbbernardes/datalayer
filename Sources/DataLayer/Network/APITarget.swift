@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum APITarget {
+public enum APITarget {
     case getProducts
     
     var baseURL: URL {

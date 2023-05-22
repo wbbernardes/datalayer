@@ -22,7 +22,7 @@ extension URLSession: NetworkSession {
     }
 }
 
-protocol APIServiceProtocol {
+public protocol APIServiceProtocol {
     @available(macOS 10.15, *)
     func request<T: Decodable>(_ target: APITarget) async throws -> T
 }
