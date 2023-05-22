@@ -28,12 +28,10 @@ public protocol APIServiceProtocol {
     @available(iOS 15.0, *)
     @available(macOS 10.15, *)
     func request<T: Decodable>(_ target: APITarget) async throws -> T
-    
-    func makeServiceInstance() -> APIServiceProtocol
 }
 
 extension APIServiceProtocol {
-    public func makeServiceInstance() -> APIServiceProtocol {
+    public static func makeServiceInstance() -> APIServiceProtocol {
         return APIService()
     }
 }
