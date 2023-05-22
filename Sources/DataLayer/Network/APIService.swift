@@ -9,6 +9,7 @@ import Combine
 import Foundation
 
 public protocol NetworkSession {
+    @available(iOS 15.0, *)
     @available(macOS 10.15, *)
     func customDataTaskPublisher(for request: URLRequest) async throws -> (Data, URLResponse)
 }
