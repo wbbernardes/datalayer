@@ -17,7 +17,7 @@ public protocol ProductRepositoryProtocol {
 public struct ProductRepository: ProductRepositoryProtocol {
     private let apiService: APIServiceProtocol
 
-    init(apiService: APIServiceProtocol) {
+    public init(apiService: APIServiceProtocol) {
         self.apiService = apiService
     }
     
