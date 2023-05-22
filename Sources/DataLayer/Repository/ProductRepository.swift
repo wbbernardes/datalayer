@@ -11,15 +11,30 @@ import Domain
 
 @available(iOS 15.0, *)
 @available(macOS 10.15, *)
-public struct ProductRepository: ProductRepositoryProtocol {
+struct ProductRepository: ProductRepositoryProtocol {
     private let apiService: APIServiceProtocol
 
-    public init(apiService: APIServiceProtocol) {
+    init(apiService: APIServiceProtocol) {
         self.apiService = apiService
     }
     
-    public func fetchProducts() async throws -> [Product] {
+    func fetchProducts() async throws -> [Product] {
         let object: [ProductDTO] = try await apiService.request(.getProducts)
         return object.map { $0.toDomain() }
+    }
+}
+
+
+public protocol ProductRepositoryFactoryProtocol {
+    func makeProductRepository(apiService: APIServiceProtocol) -> ProductRepositoryProtocol
+}
+
+@available(iOS 15.0, *)
+@available(macOS 10.15, *)
+public struct ProductRepositoryFactory: ProductRepositoryFactoryProtocol {
+    public init() {}
+    
+    public func makeProductRepository(apiService: APIServiceProtocol) -> ProductRepositoryProtocol {
+        return ProductRepository(apiService: apiService)
     }
 }
