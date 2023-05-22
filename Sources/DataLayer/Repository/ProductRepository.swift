@@ -14,14 +14,14 @@ public protocol ProductRepositoryProtocol {
 }
 
 @available(macOS 10.15, *)
-struct ProductRepository: ProductRepositoryProtocol {
+public struct ProductRepository: ProductRepositoryProtocol {
     private let apiService: APIServiceProtocol
 
     init(apiService: APIServiceProtocol) {
         self.apiService = apiService
     }
     
-    func fetchProducts() async throws -> [ProductDTO] {
+    public func fetchProducts() async throws -> [ProductDTO] {
         return try await apiService.request(.getProducts)
     }
 }

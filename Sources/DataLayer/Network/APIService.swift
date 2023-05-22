@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-protocol NetworkSession {
+public protocol NetworkSession {
     @available(macOS 10.15, *)
     func customDataTaskPublisher(for request: URLRequest) async throws -> (Data, URLResponse)
 }
@@ -16,7 +16,7 @@ protocol NetworkSession {
 // Extend URLSession to conform to NetworkSession
 extension URLSession: NetworkSession {
     @available(macOS 10.15, *)
-    func customDataTaskPublisher(for request: URLRequest) async throws -> (Data, URLResponse) {
+    public func customDataTaskPublisher(for request: URLRequest) async throws -> (Data, URLResponse) {
         let (data, response) = try await self.data(for: request)
         return (data, response)
     }
@@ -27,15 +27,15 @@ public protocol APIServiceProtocol {
     func request<T: Decodable>(_ target: APITarget) async throws -> T
 }
 
-class APIService: APIServiceProtocol {
+public class APIService: APIServiceProtocol {
     private let session: NetworkSession
 
-    init(session: NetworkSession = URLSession.shared) {
+    public init(session: NetworkSession = URLSession.shared) {
         self.session = session
     }
     
     @available(macOS 10.15, *)
-    func request<T: Decodable>(_ target: APITarget) async throws -> T {
+    public func request<T: Decodable>(_ target: APITarget) async throws -> T {
         var request = URLRequest(url: target.url)
         request.httpMethod = target.method
         request.allHTTPHeaderFields = target.headers
