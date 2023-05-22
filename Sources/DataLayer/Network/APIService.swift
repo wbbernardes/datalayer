@@ -8,6 +8,17 @@
 import Combine
 import Foundation
 
+public protocol ServiceFactoryProtocol {
+    func makeAPIService() -> APIServiceProtocol
+}
+public struct ServiceFactory: ServiceFactoryProtocol {
+    public init() {}
+    
+    public func makeAPIService() -> APIServiceProtocol {
+        return APIService() // Initialize your concrete APIService here
+    }
+}
+
 public protocol NetworkSession {
     @available(iOS 15.0, *)
     @available(macOS 10.15, *)
