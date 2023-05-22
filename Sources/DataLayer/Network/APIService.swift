@@ -8,11 +8,7 @@
 import Combine
 import Foundation
 
-public protocol ServiceFactoryProtocol {
-    func makeAPIService() -> APIServiceProtocol
-}
-
-public struct ServiceFactory: ServiceFactoryProtocol {
+public struct APIFactory {
     public init() {}
     
     public func makeAPIService() -> APIServiceProtocol {
