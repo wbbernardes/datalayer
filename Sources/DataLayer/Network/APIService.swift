@@ -17,6 +17,7 @@ public protocol NetworkSession {
 extension URLSession: NetworkSession {
     @available(macOS 10.15, *)
     public func customDataTaskPublisher(for request: URLRequest) async throws -> (Data, URLResponse) {
+        @available(macOS 10.15, *)
         let (data, response) = try await self.data(for: request)
         return (data, response)
     }
