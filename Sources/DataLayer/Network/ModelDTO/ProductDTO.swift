@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Domain
 
 public struct ProductDTO: Codable, Identifiable {
     public let id: Int
@@ -48,5 +49,16 @@ public struct ProductDTO: Codable, Identifiable {
         self.description = try container.decodeIfPresent(String.self, forKey: .description) ?? ""
         self.image = try container.decodeIfPresent(String.self, forKey: .image) ?? ""
         self.category = try container.decodeIfPresent(String.self, forKey: .category) ?? ""
+    }
+}
+
+extension ProductDTO {
+    public func toDomain() -> Product {
+        return Product(id: self.id,
+                          title: self.title,
+                          price: self.price,
+                          description: self.description,
+                          image: self.image,
+                          category: self.category)
     }
 }

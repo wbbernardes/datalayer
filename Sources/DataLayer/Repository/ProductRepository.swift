@@ -7,12 +7,7 @@
 
 import Foundation
 import Combine
-
-public protocol ProductRepositoryProtocol {
-    @available(iOS 15.0, *)
-    @available(macOS 10.15, *)
-    func fetchProducts() async throws -> [ProductDTO]
-}
+import Domain
 
 @available(iOS 15.0, *)
 @available(macOS 10.15, *)
@@ -23,7 +18,8 @@ public struct ProductRepository: ProductRepositoryProtocol {
         self.apiService = apiService
     }
     
-    public func fetchProducts() async throws -> [ProductDTO] {
-        return try await apiService.request(.getProducts)
+    public func fetchProducts() async throws -> [Product] {
+        let object: [ProductDTO] = try await apiService.request(.getProducts)
+        return object.map { $0.toDomain() }
     }
 }

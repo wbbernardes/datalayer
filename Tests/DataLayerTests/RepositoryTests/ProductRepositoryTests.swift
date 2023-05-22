@@ -7,6 +7,7 @@
 
 import XCTest
 import Combine
+import Domain
 @testable import DataLayer
 
 class ProductRepositoryTests: XCTestCase {

@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "domain",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/wbbernardes/domain.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "4b55bdd125da53151f5ac858feca59d725fd1c0a"
+      }
+    }
+  ],
+  "version" : 2
+}
