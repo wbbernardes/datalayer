@@ -11,6 +11,7 @@ import Foundation
 public protocol ServiceFactoryProtocol {
     func makeAPIService() -> APIServiceProtocol
 }
+
 public struct ServiceFactory: ServiceFactoryProtocol {
     public init() {}
     
@@ -39,19 +40,12 @@ public protocol APIServiceProtocol {
     @available(iOS 15.0, *)
     @available(macOS 10.15, *)
     func request<T: Decodable>(_ target: APITarget) async throws -> T
-    static func makeServiceInstance() -> APIServiceProtocol
 }
 
-extension APIServiceProtocol {
-    public static func makeServiceInstance() -> APIServiceProtocol {
-        return APIService()
-    }
-}
-
-public class APIService: APIServiceProtocol {
+class APIService: APIServiceProtocol {
     private let session: NetworkSession
 
-    public init(session: NetworkSession = URLSession.shared) {
+    init(session: NetworkSession = URLSession.shared) {
         self.session = session
     }
     
