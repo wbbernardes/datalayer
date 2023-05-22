@@ -9,10 +9,12 @@ import Foundation
 import Combine
 
 public protocol ProductRepositoryProtocol {
+    @available(iOS 15.0, *)
     @available(macOS 10.15, *)
     func fetchProducts() async throws -> [ProductDTO]
 }
 
+@available(iOS 15.0, *)
 @available(macOS 10.15, *)
 public struct ProductRepository: ProductRepositoryProtocol {
     private let apiService: APIServiceProtocol

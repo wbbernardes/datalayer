@@ -25,6 +25,7 @@ extension URLSession: NetworkSession {
 }
 
 public protocol APIServiceProtocol {
+    @available(iOS 15.0, *)
     @available(macOS 10.15, *)
     func request<T: Decodable>(_ target: APITarget) async throws -> T
 }
@@ -36,6 +37,7 @@ public class APIService: APIServiceProtocol {
         self.session = session
     }
     
+    @available(iOS 15.0, *)
     @available(macOS 10.15, *)
     public func request<T: Decodable>(_ target: APITarget) async throws -> T {
         var request = URLRequest(url: target.url)
