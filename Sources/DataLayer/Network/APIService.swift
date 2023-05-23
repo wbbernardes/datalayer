@@ -9,10 +9,8 @@ import Combine
 import Foundation
 
 public struct APIFactory {
-    public init() {}
-    
-    public func makeAPIService() -> APIServiceProtocol {
-        return APIService() // Initialize your concrete APIService here
+    public static func makeAPIService() -> APIServiceProtocol {
+        return APIService()
     }
 }
 

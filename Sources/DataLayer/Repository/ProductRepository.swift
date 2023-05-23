@@ -27,9 +27,7 @@ struct ProductRepository: ProductRepositoryProtocol {
 @available(iOS 15.0, *)
 @available(macOS 10.15, *)
 public struct ProductRepositoryFactory {
-    public init() {}
-    
-    public func makeProductRepository(apiService: APIServiceProtocol) -> ProductRepositoryProtocol {
+    public static func makeProductRepository(apiService: APIServiceProtocol) -> ProductRepositoryProtocol {
         return ProductRepository(apiService: apiService)
     }
 }
